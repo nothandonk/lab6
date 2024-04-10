@@ -1,12 +1,16 @@
+
 //create cars api using express
 const express = require('express');
 const app = express();
 
-
+app.use(express.static('public'));
 
 app.use(express.json());
 
 const cars = require('./cars.json');
+
+const bodyParser = require('body-parser')
+app.use(bodyParser.json());
 
 //get all cars
 app.get('/cars', (req, res) => {
@@ -50,3 +54,4 @@ app.post('/cars', (req, res) => {
 app.listen(3001, () => {
     console.log('Server started at http://localhost:3001');
 });
+
